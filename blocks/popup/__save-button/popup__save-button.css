@@ -1,0 +1,25 @@
+.popup__save-button{
+  width: 358px;
+  height: 50px;
+  background-image: url(popup__save-button.svg);
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  justify-self: center;
+  margin: 0 auto;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.popup__save-button:hover{
+  opacity: 80%;
+}
+
+@media screen and (max-width: 900px) {
+  .popup__save-button{
+    background-image: url(popup__save-button_small.svg);
+    width: 100%;
+  }
+} 

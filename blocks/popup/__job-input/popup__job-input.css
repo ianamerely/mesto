@@ -1,0 +1,26 @@
+.popup__job-input{
+  margin: 0;
+  padding: 0;
+  margin-bottom: 48px;
+  height: 27px;
+  width: 358px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  outline:none;
+  color: black;
+  font-size: 14px;
+  line-height: 1.21;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-bottom: 14px;
+}
+
+
+@media screen and (max-width: 900px) {
+  .popup__job-input{
+    width: 238px;
+  }
+} 
