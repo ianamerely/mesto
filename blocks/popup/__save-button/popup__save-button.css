@@ -1,7 +1,7 @@
 .popup__save-button{
   width: 358px;
   height: 50px;
-  background-image: url(popup__save-button.svg);
+  background-image: url(../../../images/popup__save-button.svg);
   border: none;
   font: inherit;
   color: inherit;
@@ -19,7 +19,7 @@
 
 @media screen and (max-width: 900px) {
   .popup__save-button{
-    background-image: url(popup__save-button_small.svg);
+    background-image: url(../../../images/popup__save-button_small.svg);
     width: 100%;
   }
 } 
