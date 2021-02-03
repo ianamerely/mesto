@@ -12,7 +12,7 @@
   background-color: transparent;
   display: flex;
   box-sizing: content-box;
-  align-self: flex-end;
+  align-self: center;
   transition: 0.3s;
 }
 

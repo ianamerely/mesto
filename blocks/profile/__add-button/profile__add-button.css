@@ -13,6 +13,7 @@
   display: block;
   justify-self: flex-end;
   transition: 0.3s;
+  outline: none;
 }
 
 .profile__add-button:hover{
