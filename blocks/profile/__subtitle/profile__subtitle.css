@@ -6,11 +6,9 @@
   color: white;
   font-weight: 400;
   width: 336px;
-  text-overflow: ellipsis;
   white-space: nowrap;
   text-align: left;
   text-overflow: ellipsis;
-  white-space: nowrap;
   overflow: hidden;
 
 }

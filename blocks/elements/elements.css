@@ -16,7 +16,7 @@
     .elements{
       padding-top: 36px;
       max-width: 282px;
-      grid-template-columns:  1fr ;
+      grid-template-columns:  1fr;
       grid-template-rows:  1fr;
     }
   } 
