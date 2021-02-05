@@ -4,6 +4,10 @@
   width: 22px;
   height: 19px;
   transition: 0.3s;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
 }
 
 .element__heart-icon:hover{

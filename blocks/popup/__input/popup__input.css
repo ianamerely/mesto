@@ -1,8 +1,8 @@
-.popup__name-input{
+.popup__input{
   margin: 0;
   padding: 0;
-  margin-bottom: 30px;
-  width: 358px;
+  width: 100%;
+  max-width: 358px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   color: black;
@@ -14,11 +14,11 @@
   white-space: nowrap;
   overflow: hidden;
   box-sizing: border-box;
-  padding-bottom: 14px;
+  padding-bottom: 13px;
 }
 
 @media screen and (max-width: 900px) {
-  .popup__name-input{
-    width: 238px;
+  .popup__input{
+    max-width: 238px;
   }
 } 

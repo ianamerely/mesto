@@ -1,7 +1,7 @@
 .element__action-panel{
   background-color: white;
-  min-height: 23px;
-  width: 246px;
+  width: 100%;
+  max-width: 246px;
   display: flex;
   flex-direction: row;
   align-items: center;
