@@ -8,8 +8,8 @@ let profileSubtitle = document.querySelector('.profile__subtitle')
 let form = popup.querySelector('.popup__container');
 let addClassPopup = function(){
   popup.classList.add('popup_opened');
-  nameInput.value= profileTitle.innerText
-  jobInput.value = profileSubtitle.innerText
+  nameInput.value= profileTitle.textContent
+  jobInput.value = profileSubtitle.textContent
 }
 let removeClassPopup = function(){
   popup.classList.remove('popup_opened');
