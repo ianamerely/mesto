@@ -20,8 +20,9 @@
       </div>
       <button type="button" class="profile__add-button"></button>
     </section>
-    <div class="popup">
-      <form name="Form" class="popup__container" >
+    
+    <div class="popup profile-popup">
+      <form name="FormProfile" class="popup__container" >
         <h2 class="popup__header">Редактировать профиль</h2>
         <input class="popup__input popup__input_type_name" value="" name="nameInput">
         <input class="popup__input popup__input_type_job" value="" name="jobInput">
@@ -29,49 +30,27 @@
         <button class="popup__save-button" type="submit"></button>
       </form>
     </div>
+
+    <div class="popup place-popup">
+      <form name="FormPlace" class="popup__container" >
+        <h2 class="popup__header">Новое место</h2>
+        <input class="popup__input popup__input_type_place-name" value="" name="placeName"  placeholder="Название">
+        <input class="popup__input popup__input_type_place-link" value="" name="placeLink"  placeholder="Ссылка на картинку">
+        <button class="popup__close-button" type="button"></button>
+        <button class="popup__save-button" type="submit"></button>
+      </form>
+    </div>
+
     <section class="elements">
-      <div class="element">
-        <img class="element__pic" src="images/karachaevsk.png" alt="г.Карачаевск">
-        <div class="element__action-panel">
-          <h2 class="element__name">Карачаевск</h2>
-          <button class="element__heart-icon" type="button"></button>
+      <template class="template">
+        <div class="element">
+          <img class="element__pic" src="" alt="">
+          <div class="element__action-panel">
+            <h2 class="element__name"></h2>
+            <button class="element__heart-icon" type="button"></button>
+          </div>
         </div>
-      </div>
-      <div class="element">
-        <img class="element__pic" src="images/elbrus.png" alt="гора Эльбрус">
-        <div class="element__action-panel">
-          <h2 class="element__name">Ельбрус</h2>
-          <button class="element__heart-icon" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__pic" src="images/dombay.png" alt="территория Домбай">
-        <div class="element__action-panel">
-          <h2 class="element__name">Домбай</h2>
-          <button class="element__heart-icon" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__pic" src="images/kavkaz.jpg" alt="Кавказ">
-        <div class="element__action-panel">
-          <h2 class="element__name">Кавказ</h2>
-          <button class="element__heart-icon" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__pic" src="images/sakhalin.jpg" alt="полуостров Сахалин">
-        <div class="element__action-panel">
-          <h2 class="element__name">Сахалин</h2>
-          <button class="element__heart-icon" type="button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__pic" src="images/rostov-na-donu.jpg" alt="Ростовская область">
-        <div class="element__action-panel">
-          <h2 class="element__name">Ростовская область</h2>
-          <button class="element__heart-icon" type="button"></button>
-        </div>
-      </div>
+      </template>
     </section>
   </main>
   <footer class="footer">
