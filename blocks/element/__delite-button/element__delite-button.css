@@ -1,0 +1,15 @@
+.element__delite-button{
+  background-image: url(../../../images/element__delite-button.svg);
+  width: 15.5px;
+  height: 13.5px;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  outline: none;
+}

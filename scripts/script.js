@@ -6,13 +6,27 @@ let jobInput = profilePopup.querySelector('.popup__input_type_job');
 let profileTitle = document.querySelector('.profile__title')
 let profileSubtitle = document.querySelector('.profile__subtitle')
 let formProfile = profilePopup.querySelector('.popup__container');
-
 let placePopup = document.querySelector('.place-popup')
 let placeOpenButton = document.querySelector('.profile__add-button')
 let placeCloseButton = placePopup.querySelector('.popup__close-button')
 let placeNameInput = placePopup.querySelector('.popup__input_type_place-name');
 let placeLinkInput = placePopup.querySelector('.popup__input_type_place-link');
 let formPlace = placePopup.querySelector('.popup__container');
+
+
+function deliteElementHandler(event){
+  const targetEl = event.target;
+  const targetItem = targetEl.closest('.element');
+  targetItem.remove();
+}
+
+
+function likeElementHandler(event){
+  const targetEl = event.target;
+  const targetItem = targetEl.closest('.element__heart-icon');
+  targetItem.classList.add('element__heart-icon_liked')
+
+}
 
 let addClassProfile = function(){
   profilePopup.classList.add('popup_opened');
@@ -38,9 +52,6 @@ function closeViaOverlay(evt){
   }
 }
 
-profilePopup.addEventListener('click', closeViaOverlay)
-placePopup.addEventListener('click', closeViaOverlay)
-
 
 function profileSubmitHandler (evt){
     evt.preventDefault();
@@ -60,7 +71,7 @@ function placeSubmitHandler(evt){
     placeLinkInput.value = "";
   }
 
-
+profilePopup.addEventListener('click', closeViaOverlay)
 profileOpenButton.addEventListener('click', addClassProfile)
 profileCloseButton.addEventListener('click', removeClassProfile)
 formProfile.addEventListener('submit', profileSubmitHandler); 
@@ -68,6 +79,8 @@ formProfile.addEventListener('submit', profileSubmitHandler);
 placeOpenButton.addEventListener('click', addClassPlace);
 placeCloseButton.addEventListener('click', removeClassPlace);
 formPlace.addEventListener('submit', placeSubmitHandler)
+placePopup.addEventListener('click', closeViaOverlay)
+  
 
 
 const initialCards = [
@@ -77,7 +90,7 @@ const initialCards = [
   },
   {
     name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    link: 'https://images.unsplash.com/photo-1566492885978-1d1cd6998fbc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80'
   },
   {
     name: 'Иваново',
@@ -106,14 +119,17 @@ function getItem(item){
   const itemPicture = newItem.querySelector('.element__pic');
   itemTitle.textContent = item.name;
   itemPicture.src = item.link;
+  itemPicture.alt= item.name;
+  const deliteElementButton = newItem.querySelector('.element__delite-button');
+  deliteElementButton.addEventListener('click', deliteElementHandler);
+  const likeElementButton = newItem.querySelector('.element__heart-icon');
+  likeElementButton.addEventListener('click', likeElementHandler);
   return newItem;
 }
-
+  
 function render() {
   const html = initialCards
   .map(getItem)
   elementsContainer.append(...html);
 }
-render();
-
-
+render()

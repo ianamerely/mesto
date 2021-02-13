@@ -14,7 +14,9 @@
 @import url('../blocks/element/element.css');
 @import url('../blocks/element/__action-panel/element__action-panel.css');
 @import url('../blocks/element/__heart-icon/element__heart-icon.css');
+@import url('../blocks/element/__heart-icon/_liked/element__heart-icon_liked.css');
 @import url('../blocks/element/__name/element__name.css');
+@import url('../blocks/element/__delite-button/element__delite-button.css');
 @import url('../blocks/element/__pic/element__pic.css');
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');
