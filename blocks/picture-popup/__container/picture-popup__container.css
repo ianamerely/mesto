@@ -1,0 +1,11 @@
+.picture-popup__container{
+  max-width: 75vw;
+  max-height: 75vh;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-self: center;
+  margin-top: calc(25vh/2);
+  margin-top: 12.5vh;
+}

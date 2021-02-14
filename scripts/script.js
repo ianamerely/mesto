@@ -6,6 +6,7 @@ let jobInput = profilePopup.querySelector('.popup__input_type_job');
 let profileTitle = document.querySelector('.profile__title')
 let profileSubtitle = document.querySelector('.profile__subtitle')
 let formProfile = profilePopup.querySelector('.popup__container');
+
 let placePopup = document.querySelector('.place-popup')
 let placeOpenButton = document.querySelector('.profile__add-button')
 let placeCloseButton = placePopup.querySelector('.popup__close-button')
@@ -25,7 +26,6 @@ function likeElementHandler(event){
   const targetEl = event.target;
   const targetItem = targetEl.closest('.element__heart-icon');
   targetItem.classList.add('element__heart-icon_liked')
-
 }
 
 let addClassProfile = function(){
@@ -43,6 +43,19 @@ let addClassPlace = function(){
 let removeClassPlace = function(){
   placePopup.classList.remove('popup_opened');
 }
+
+const picturePopup = document.querySelector('.picture-popup');
+const picturePopupPic = picturePopup.querySelector('.picture-popup__container')
+const picturePopupSubtitle = picturePopup.querySelector('.picture-popup__subtitle');
+
+
+
+  
+function openPicturePopub(){
+  picturePopup.classList.add('picture-popup_opened');
+  getItem();
+}
+
  
 
 function closeViaOverlay(evt){
@@ -113,6 +126,7 @@ const initialCards = [
 
 const elementsContainer = document.querySelector('.elements');
 const templateElement = document.querySelector('.template');
+
 function getItem(item){
   const newItem = templateElement.content.cloneNode(true);
   const itemTitle = newItem.querySelector('.element__name');
@@ -124,9 +138,13 @@ function getItem(item){
   deliteElementButton.addEventListener('click', deliteElementHandler);
   const likeElementButton = newItem.querySelector('.element__heart-icon');
   likeElementButton.addEventListener('click', likeElementHandler);
+  itemPicture.addEventListener('click', openPicturePopub);
+  picturePopupPic.src = item.link;
+  picturePopupSubtitle.textContent = item.name;
   return newItem;
 }
-  
+
+
 function render() {
   const html = initialCards
   .map(getItem)
