@@ -14,13 +14,20 @@ let placeNameInput = placePopup.querySelector('.popup__input_type_place-name');
 let placeLinkInput = placePopup.querySelector('.popup__input_type_place-link');
 let formPlace = placePopup.querySelector('.popup__container');
 
+let picturePopup = document.querySelector('.picture-popup');
+let picturePopupPic = document.querySelector('.picture-popup__pic');
+let picturePopupSubtitle = document.querySelector('.picture-popup__subtitle');
+let picturePopupCloseButton = picturePopup.querySelector('.popup__close-button');
+
+
+
+
 
 function deliteElementHandler(event){
   const targetEl = event.target;
   const targetItem = targetEl.closest('.element');
   targetItem.remove();
 }
-
 
 function likeElementHandler(event){
   const targetEl = event.target;
@@ -44,19 +51,11 @@ let removeClassPlace = function(){
   placePopup.classList.remove('popup_opened');
 }
 
-const picturePopup = document.querySelector('.picture-popup');
-const picturePopupPic = picturePopup.querySelector('.picture-popup__container')
-const picturePopupSubtitle = picturePopup.querySelector('.picture-popup__subtitle');
-
-
-
-  
-function openPicturePopub(){
-  picturePopup.classList.add('picture-popup_opened');
-  getItem();
+let removeClassPicture = function(){
+  picturePopup.classList.remove('picture-popup_opened');
 }
 
- 
+picturePopupCloseButton.addEventListener('click', removeClassPicture)
 
 function closeViaOverlay(evt){
   if (evt.target === evt.currentTarget){
@@ -65,6 +64,12 @@ function closeViaOverlay(evt){
   }
 }
 
+ function openPicturePopub(event){
+  const targetEl = event.target;
+  const targetItem = targetEl.closest('.element__pic');
+  picturePopup.classList.add('picture-popup_opened');
+  getItem(item);
+ }
 
 function profileSubmitHandler (evt){
     evt.preventDefault();
@@ -141,9 +146,21 @@ function getItem(item){
   itemPicture.addEventListener('click', openPicturePopub);
   picturePopupPic.src = item.link;
   picturePopupSubtitle.textContent = item.name;
+
+  function openPicturePopub(event){
+    let picturePopup = document.querySelector('.picture-popup');
+    let picturePopupPic = document.querySelector('.picture-popup__pic');
+    let picturePopupSubtitle = document.querySelector('.picture-popup__subtitle');
+    const targetEl = event.target;
+    const targetItem = targetEl.closest('.element__pic');
+    picturePopup.classList.add('picture-popup_opened');
+    picturePopupPic.src = item.link;
+    picturePopupSubtitle.textContent = item.name
+    picturePopupSubtitle.textContent = item.name;
+    item.link = targetItem.src
+   }
   return newItem;
 }
-
 
 function render() {
   const html = initialCards

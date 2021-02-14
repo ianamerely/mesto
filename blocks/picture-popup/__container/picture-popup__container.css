@@ -1,11 +1,14 @@
 .picture-popup__container{
-  max-width: 75vw;
-  max-height: 75vh;
-  margin: 0 auto;
-  display: flex;
+  max-width: fit-content;
+  height: fit-content;
+  box-sizing: border-box;
+  opacity: 1;
+  z-index: 2;
   position: relative;
+  display: flex;
   flex-direction: column;
+  margin: 0 auto;
   align-self: center;
-  margin-top: calc(25vh/2);
   margin-top: 12.5vh;
 }
+
