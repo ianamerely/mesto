@@ -64,12 +64,12 @@ function closeViaOverlay(evt){
   }
 }
 
- function openPicturePopub(event){
-  const targetEl = event.target;
-  const targetItem = targetEl.closest('.element__pic');
-  picturePopup.classList.add('picture-popup_opened');
-  getItem(item);
- }
+ //function openPicturePopub(event){
+  //const targetEl = event.target;
+  //const targetItem = targetEl.closest('.element__pic');
+  //picturePopup.classList.add('picture-popup_opened');
+  //getItem(item);
+ //}
 
 function profileSubmitHandler (evt){
     evt.preventDefault();
