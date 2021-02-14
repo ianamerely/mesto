@@ -1,3 +1,7 @@
 .picture-popup_opened{
   display: block;
+  transition: opacity 1s linear, visibility 1s linear;
+  visibility: visible;
+  opacity: 1;
+  position: relative;
 }

@@ -28,6 +28,7 @@
 @import url('../blocks/popup/__input/popup__input.css');
 @import url('../blocks/popup/__save-button/popup__save-button.css');
 @import url('../blocks/picture-popup/picture-popup.css');
+@import url('../blocks/picture-popup/__close-button/picture-popup__close-button.css');
 @import url('../blocks/picture-popup/__container/picture-popup__container.css');
 @import url('../blocks/picture-popup/_opened/picture-popup_opened.css');
 @import url('../blocks/picture-popup/__pic/picture-popup__pic.css');

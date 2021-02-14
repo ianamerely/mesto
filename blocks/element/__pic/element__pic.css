@@ -4,3 +4,7 @@
   margin-bottom: 25px;
   border-radius: 10px 10px 0px 0px;
 }
+
+.element__pic:hover{
+  cursor: pointer;
+}

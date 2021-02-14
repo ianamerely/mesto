@@ -6,7 +6,9 @@
   bottom: 0;
   z-index: 1;
   display: none;
+  visibility: hidden;
+  opacity: 0;
   background-color: rgba(0,0,0, .9);
-  
+  transition: opacity 1s linear, visibility 1s linear;
 }
 

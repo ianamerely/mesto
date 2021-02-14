@@ -13,3 +13,8 @@
   background-color: transparent;
   outline: none;
 }
+
+.element__delite-button:hover{
+  opacity: 50%;
+  cursor: pointer;
+}

@@ -17,7 +17,7 @@ let formPlace = placePopup.querySelector('.popup__container');
 let picturePopup = document.querySelector('.picture-popup');
 let picturePopupPic = document.querySelector('.picture-popup__pic');
 let picturePopupSubtitle = document.querySelector('.picture-popup__subtitle');
-let picturePopupCloseButton = picturePopup.querySelector('.popup__close-button');
+let picturePopupCloseButton = picturePopup.querySelector('.picture-popup__close-button');
 
 
 
