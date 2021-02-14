@@ -4,11 +4,12 @@
   left: 0;
   right: 0;
   bottom: 0;
+  height: 100%;
   z-index: 1;
   display: none;
+  background-color: rgba(0,0,0, .9);
   visibility: hidden;
   opacity: 0;
-  background-color: rgba(0,0,0, .9);
-  transition: opacity 1s linear, visibility 1s linear;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
