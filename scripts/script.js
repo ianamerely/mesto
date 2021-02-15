@@ -1,4 +1,4 @@
-let profilePopup = document.querySelector('.profile-popup')
+let profilePopup = document.querySelector('.popup_type_profile')
 let profileOpenButton = document.querySelector('.profile__edit-button')
 let profileCloseButton = profilePopup.querySelector('.popup__close-button')
 let nameInput = profilePopup.querySelector('.popup__input_type_name');
@@ -7,17 +7,17 @@ let profileTitle = document.querySelector('.profile__title')
 let profileSubtitle = document.querySelector('.profile__subtitle')
 let formProfile = profilePopup.querySelector('.popup__container');
 
-let placePopup = document.querySelector('.place-popup')
+let placePopup = document.querySelector('.popup_type_place')
 let placeOpenButton = document.querySelector('.profile__add-button')
 let placeCloseButton = placePopup.querySelector('.popup__close-button')
 let placeNameInput = placePopup.querySelector('.popup__input_type_place-name');
 let placeLinkInput = placePopup.querySelector('.popup__input_type_place-link');
 let formPlace = placePopup.querySelector('.popup__container');
 
-let picturePopup = document.querySelector('.picture-popup');
-let picturePopupPic = document.querySelector('.picture-popup__pic');
-let picturePopupSubtitle = document.querySelector('.picture-popup__subtitle');
-let picturePopupCloseButton = picturePopup.querySelector('.picture-popup__close-button');
+let picturePopup = document.querySelector('.popup_type_picture');
+let picturePopupPic = document.querySelector('.popup_type_picture__pic');
+let picturePopupSubtitle = document.querySelector('.popup_type_picture__subtitle');
+let picturePopupCloseButton = picturePopup.querySelector('.popup_type_picture__close-button');
 
 
 
@@ -52,7 +52,7 @@ let removeClassPlace = function(){
 }
 
 let removeClassPicture = function(){
-  picturePopup.classList.remove('picture-popup_opened');
+  picturePopup.classList.remove('popup_opened');
 }
 
 picturePopupCloseButton.addEventListener('click', removeClassPicture)
@@ -63,13 +63,6 @@ function closeViaOverlay(evt){
    removeClassPlace()
   }
 }
-
- //function openPicturePopub(event){
-  //const targetEl = event.target;
-  //const targetItem = targetEl.closest('.element__pic');
-  //picturePopup.classList.add('picture-popup_opened');
-  //getItem(item);
- //}
 
 function profileSubmitHandler (evt){
     evt.preventDefault();
@@ -148,12 +141,12 @@ function getItem(item){
   picturePopupSubtitle.textContent = item.name;
 
   function openPicturePopub(event){
-    let picturePopup = document.querySelector('.picture-popup');
-    let picturePopupPic = document.querySelector('.picture-popup__pic');
-    let picturePopupSubtitle = document.querySelector('.picture-popup__subtitle');
+    let picturePopup = document.querySelector('.popup_type_picture');
+    let picturePopupPic = document.querySelector('.popup_type_picture__pic');
+    let picturePopupSubtitle = document.querySelector('.popup_type_picture__subtitle');
     const targetEl = event.target;
     const targetItem = targetEl.closest('.element__pic');
-    picturePopup.classList.add('picture-popup_opened');
+    picturePopup.classList.add('popup_opened');
     picturePopupPic.src = item.link;
     picturePopupSubtitle.textContent = item.name
     picturePopupSubtitle.textContent = item.name;
