@@ -15,9 +15,9 @@ const placeLinkInput = placePopup.querySelector('.popup__input_type_place-link')
 const formPlace = placePopup.querySelector('.popup__container');
 
 const picturePopup = document.querySelector('.popup_type_picture');
-const picturePopupPic = document.querySelector('.popup_type_picture__pic');
-const picturePopupSubtitle = document.querySelector('.popup_type_picture__subtitle');
-const picturePopupCloseButton = picturePopup.querySelector('.popup_type_picture__close-button');
+const picturePopupPic = document.querySelector('.popup__picture');
+const picturePopupSubtitle = document.querySelector('.popup__subtitle');
+const picturePopupCloseButton = picturePopup.querySelector('.popup__close-button');
 
 
 
@@ -141,9 +141,9 @@ function getItem(item){
   picturePopupSubtitle.textContent = item.name;
 
   function openPicturePopub(event){
-    const picturePopup = document.querySelector('.popup_type_picture');
-    const picturePopupPic = document.querySelector('.popup_type_picture__pic');
-    const picturePopupSubtitle = document.querySelector('.popup_type_picture__subtitle');
+  const picturePopup = document.querySelector('.popup_type_picture');
+  const picturePopupPic = document.querySelector('.popup__picture');
+  const picturePopupSubtitle = document.querySelector('.popup__subtitle');
     const targetEl = event.target;
     const targetItem = targetEl.closest('.element__pic');
     picturePopup.classList.add('popup_opened');
