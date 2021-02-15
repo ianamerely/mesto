@@ -148,6 +148,7 @@ function getItem(item){
     const targetItem = targetEl.closest('.element__pic');
     picturePopup.classList.add('popup_opened');
     picturePopupPic.src = item.link;
+    picturePopupPic.alt = item.name;
     picturePopupSubtitle.textContent = item.name
     picturePopupSubtitle.textContent = item.name;
     item.link = targetItem.src
