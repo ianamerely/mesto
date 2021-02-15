@@ -1,23 +1,23 @@
-let profilePopup = document.querySelector('.popup_type_profile')
-let profileOpenButton = document.querySelector('.profile__edit-button')
-let profileCloseButton = profilePopup.querySelector('.popup__close-button')
-let nameInput = profilePopup.querySelector('.popup__input_type_name');
-let jobInput = profilePopup.querySelector('.popup__input_type_job');
-let profileTitle = document.querySelector('.profile__title')
-let profileSubtitle = document.querySelector('.profile__subtitle')
-let formProfile = profilePopup.querySelector('.popup__container');
+const profilePopup = document.querySelector('.popup_type_profile')
+const profileOpenButton = document.querySelector('.profile__edit-button')
+const profileCloseButton = profilePopup.querySelector('.popup__close-button')
+const nameInput = profilePopup.querySelector('.popup__input_type_name');
+const jobInput = profilePopup.querySelector('.popup__input_type_job');
+const profileTitle = document.querySelector('.profile__title')
+const profileSubtitle = document.querySelector('.profile__subtitle')
+const formProfile = profilePopup.querySelector('.popup__container');
 
-let placePopup = document.querySelector('.popup_type_place')
-let placeOpenButton = document.querySelector('.profile__add-button')
-let placeCloseButton = placePopup.querySelector('.popup__close-button')
-let placeNameInput = placePopup.querySelector('.popup__input_type_place-name');
-let placeLinkInput = placePopup.querySelector('.popup__input_type_place-link');
-let formPlace = placePopup.querySelector('.popup__container');
+const placePopup = document.querySelector('.popup_type_place')
+const placeOpenButton = document.querySelector('.profile__add-button')
+const placeCloseButton = placePopup.querySelector('.popup__close-button')
+const placeNameInput = placePopup.querySelector('.popup__input_type_place-name');
+const placeLinkInput = placePopup.querySelector('.popup__input_type_place-link');
+const formPlace = placePopup.querySelector('.popup__container');
 
-let picturePopup = document.querySelector('.popup_type_picture');
-let picturePopupPic = document.querySelector('.popup_type_picture__pic');
-let picturePopupSubtitle = document.querySelector('.popup_type_picture__subtitle');
-let picturePopupCloseButton = picturePopup.querySelector('.popup_type_picture__close-button');
+const picturePopup = document.querySelector('.popup_type_picture');
+const picturePopupPic = document.querySelector('.popup_type_picture__pic');
+const picturePopupSubtitle = document.querySelector('.popup_type_picture__subtitle');
+const picturePopupCloseButton = picturePopup.querySelector('.popup_type_picture__close-button');
 
 
 
@@ -35,23 +35,23 @@ function likeElementHandler(event){
   targetItem.classList.add('element__heart-icon_liked')
 }
 
-let addClassProfile = function(){
+const addClassProfile = function(){
   profilePopup.classList.add('popup_opened');
   nameInput.value= profileTitle.textContent
   jobInput.value = profileSubtitle.textContent
 }
-let removeClassProfile = function(){
+const removeClassProfile = function(){
   profilePopup.classList.remove('popup_opened');
 }
  
-let addClassPlace = function(){
+const addClassPlace = function(){
   placePopup.classList.add('popup_opened');
 }
-let removeClassPlace = function(){
+const removeClassPlace = function(){
   placePopup.classList.remove('popup_opened');
 }
 
-let removeClassPicture = function(){
+const removeClassPicture = function(){
   picturePopup.classList.remove('popup_opened');
 }
 
@@ -141,9 +141,9 @@ function getItem(item){
   picturePopupSubtitle.textContent = item.name;
 
   function openPicturePopub(event){
-    let picturePopup = document.querySelector('.popup_type_picture');
-    let picturePopupPic = document.querySelector('.popup_type_picture__pic');
-    let picturePopupSubtitle = document.querySelector('.popup_type_picture__subtitle');
+    const picturePopup = document.querySelector('.popup_type_picture');
+    const picturePopupPic = document.querySelector('.popup_type_picture__pic');
+    const picturePopupSubtitle = document.querySelector('.popup_type_picture__subtitle');
     const targetEl = event.target;
     const targetItem = targetEl.closest('.element__pic');
     picturePopup.classList.add('popup_opened');
