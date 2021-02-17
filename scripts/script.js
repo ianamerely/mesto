@@ -45,7 +45,6 @@ const initialCards = [
   }
 ]; 
 
-
 function getItem(item){ 
   const newItem = templateElement.content.cloneNode(true); 
   const itemTitle = newItem.querySelector('.element__name'); 
@@ -80,7 +79,6 @@ function openPopup(item){
 }
 
 function openPopupTypePicture(item){
-  //getItem(item)
   openPopup(popupTypePicture);
   popupPicture.src = item.link; 
   popupPicture.alt = item.name; 
