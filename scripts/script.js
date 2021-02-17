@@ -1,27 +1,25 @@
 const popupTypeProfile = document.querySelector('.popup_type_profile');
 const popupTypePlace = document.querySelector('.popup_type_place');
 const popupTypePicture = document.querySelector('.popup_type_picture');
-const form = document.querySelector('.popup__container');
-const popup = document.querySelector('.popup');
-const popupCloseButton = document.querySelectorAll('.popup__close-button');
-const elementPicture = document.querySelectorAll('.element__pic');
+const formProfile = popupTypeProfile.querySelector('.popup__container');
+const formPlace = popupTypePlace.querySelector('.popup__container');
+const popupTypeProfileCloseButton = popupTypeProfile.querySelector('.popup__close-button');
+const popupTypePlaceCloseButton = popupTypePlace.querySelector('.popup__close-button');
+const popupTypePictureCloseButton = popupTypePicture.querySelector('.popup__close-button');
 const formProfileOpenButton = document.querySelector('.profile__edit-button');
 const formPlaceOpenButton = document.querySelector('.profile__add-button');
 const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const placeNameInput = document.querySelector('.popup__input_type_place-name');
-const placeLinkInput = document.querySelector('.popup__input_type_place-link');
+const placeNameInput = popupTypePlace.querySelector('.popup__input_type_place-name');
+const placeLinkInput = popupTypePlace.querySelector('.popup__input_type_place-link');
 const popupPicture = document.querySelector('.popup__picture');
 const popupSubtitle = document.querySelector('.popup__subtitle');
 const elementsContainer = document.querySelector('.elements');
 const templateElement = document.querySelector('.template');
-const popupOpened = ('.popup_opened');
-
 const elementDeliteButton = document.querySelector('.element__delite-button');
 const elementLikeButton = document.querySelector('.element__heart-icon');
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -48,6 +46,8 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ]; 
+
+
 function getItem(item){ 
   const newItem = templateElement.content.cloneNode(true); 
   const itemTitle = newItem.querySelector('.element__name'); 
@@ -62,16 +62,17 @@ function getItem(item){
   itemPicture.addEventListener('click', () => openPopupTypePicture(item));
   return newItem; 
 } 
+
 function render() { 
   const html = initialCards 
   .map(getItem) 
   elementsContainer.append(...html); 
 } 
-render()
 
 function handleDeleteCard(event){ 
   event.target.closest('.element').remove(); 
 } 
+
 function handleLikeIcon(event){ 
   event.target.classList.toggle('element__heart-icon_liked')
 } 
@@ -79,18 +80,6 @@ function handleLikeIcon(event){
 function openPopup(item){
   item.classList.toggle('popup_opened')
 }
-
-function openPopupTypeProfile(){
-  nameInput.value= profileTitle.textContent 
-  jobInput.value = profileSubtitle.textContent 
-  openPopup(popupTypeProfile);
-}
-formProfileOpenButton.addEventListener('click', openPopupTypeProfile)
-
-function openPopupTypePlace(){
-  openPopup(popupTypePlace);
-}
-formPlaceOpenButton.addEventListener('click', openPopupTypePlace)
 
 function openPopupTypePicture(item){
   getItem(item)
@@ -103,19 +92,31 @@ function openPopupTypePicture(item){
 function closePopup(item){
   item.classList.remove('popup_opened');
 }
- 
-function closePopupTypeProfile(){
-  closePopup(popupTypeProfile)
-}
-function closePopupTypePlace(){
-  closePopup(popupTypePlace)
-}
-function closePopupTypePicture(){
-  closePopup(popupTypePicture)
+
+function handleProfileSubmit(evt){ 
+  evt.preventDefault(); 
+  profileTitle.textContent = nameInput.value; 
+  profileSubtitle.textContent = jobInput.value; 
+  closePopup(popupTypeProfile);
 }
 
+function handlePlaceSubmit(evt){ 
+  evt.preventDefault(); 
+  let placeTitle = placeNameInput.value; 
+  let placeLink = placeLinkInput.value; 
+  const placeItem = getItem({name: placeTitle , link: placeLink}); 
+  elementsContainer.prepend(placeItem); 
+  closePopup(popupTypePlace); 
+} 
 
+formProfileOpenButton.addEventListener('click', () => {openPopup(popupTypeProfile); nameInput.value= profileTitle.textContent ;
+jobInput.value = profileSubtitle.textContent;})
+formPlaceOpenButton.addEventListener('click', () => {openPopup(popupTypePlace); placeNameInput.value = ""; 
+placeLinkInput.value = "";});  
+popupTypeProfileCloseButton.addEventListener('click', () => {closePopup(popupTypeProfile);});
+popupTypePlaceCloseButton.addEventListener('click', () => {closePopup(popupTypePlace);});
+popupTypePictureCloseButton.addEventListener('click', () => {closePopup(popupTypePicture);});
+formProfile.addEventListener('submit', handleProfileSubmit); 
+formPlace.addEventListener('submit', handlePlaceSubmit); 
 
-popupCloseButton.addEventListener('click', closePopupTypeProfile);
-popupCloseButton.addEventListener('click', closePopupTypePlace);
-popupCloseButton.addEventListener('click', closePopupTypePicture);
+render()

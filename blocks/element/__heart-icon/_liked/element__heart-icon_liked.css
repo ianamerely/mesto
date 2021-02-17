@@ -1,6 +1,7 @@
 .element__heart-icon_liked{
   background-image: url(../../../../images/element__heart-icon_liked.svg);
 }
-.element__heart-icon:hover{
-  opacity: 100%;
+.element__heart-icon_liked:hover{
+  opacity: 50%;
+  cursor: pointer;
 }
