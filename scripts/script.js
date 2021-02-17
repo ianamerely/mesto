@@ -18,8 +18,6 @@ const popupPicture = document.querySelector('.popup__picture');
 const popupSubtitle = document.querySelector('.popup__subtitle');
 const elementsContainer = document.querySelector('.elements');
 const templateElement = document.querySelector('.template');
-const elementDeliteButton = document.querySelector('.element__delite-button');
-const elementLikeButton = document.querySelector('.element__heart-icon');
 const initialCards = [
   {
     name: 'Архыз',
@@ -82,7 +80,7 @@ function openPopup(item){
 }
 
 function openPopupTypePicture(item){
-  getItem(item)
+  //getItem(item)
   openPopup(popupTypePicture);
   popupPicture.src = item.link; 
   popupPicture.alt = item.name; 
@@ -102,20 +100,24 @@ function handleProfileSubmit(evt){
 
 function handlePlaceSubmit(evt){ 
   evt.preventDefault(); 
-  let placeTitle = placeNameInput.value; 
-  let placeLink = placeLinkInput.value; 
+  const placeTitle = placeNameInput.value; 
+  const placeLink = placeLinkInput.value; 
   const placeItem = getItem({name: placeTitle , link: placeLink}); 
   elementsContainer.prepend(placeItem); 
   closePopup(popupTypePlace); 
 } 
 
-formProfileOpenButton.addEventListener('click', () => {openPopup(popupTypeProfile); nameInput.value= profileTitle.textContent ;
-jobInput.value = profileSubtitle.textContent;})
-formPlaceOpenButton.addEventListener('click', () => {openPopup(popupTypePlace); placeNameInput.value = ""; 
-placeLinkInput.value = "";});  
-popupTypeProfileCloseButton.addEventListener('click', () => {closePopup(popupTypeProfile);});
-popupTypePlaceCloseButton.addEventListener('click', () => {closePopup(popupTypePlace);});
-popupTypePictureCloseButton.addEventListener('click', () => {closePopup(popupTypePicture);});
+formProfileOpenButton.addEventListener('click', () => {
+  openPopup(popupTypeProfile); nameInput.value= profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
+})
+formPlaceOpenButton.addEventListener('click', () => {
+  openPopup(popupTypePlace); placeNameInput.value = ""; 
+  placeLinkInput.value = "";
+});  
+popupTypeProfileCloseButton.addEventListener('click', () => closePopup(popupTypeProfile));
+popupTypePlaceCloseButton.addEventListener('click', () => closePopup(popupTypePlace));
+popupTypePictureCloseButton.addEventListener('click', () => closePopup(popupTypePicture));
 formProfile.addEventListener('submit', handleProfileSubmit); 
 formPlace.addEventListener('submit', handlePlaceSubmit); 
 
