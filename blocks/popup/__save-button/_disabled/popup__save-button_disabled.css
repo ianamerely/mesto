@@ -1,0 +1,4 @@
+.popup__save-button_disabled{
+  background-image: url(../../../../images/popup__save-button_disabled.svg);
+  cursor: default;
+}
