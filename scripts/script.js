@@ -77,9 +77,10 @@ function handleLikeIcon(event){
 function openPopup(item){
   item.classList.toggle('popup_opened');
   item.tabIndex = -1
-  const openedPopup = document.querySelector('.popup_opened')
-  openedPopup.addEventListener('click', closeViaOverlay);
-  document.addEventListener('keydown', closeViaEsc)
+  /* const openedPopup = document.querySelector('.popup_opened')
+  openedPopup.addEventListener('click', closeViaOverlay); */
+  item.addEventListener('click', closeViaOverlay);
+  document.addEventListener('keydown', closeViaEsc);
 }
 
 function closePopup(item){

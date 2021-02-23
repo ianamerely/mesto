@@ -2,3 +2,12 @@
   background-image: url(../../../../images/popup__save-button_disabled.svg);
   cursor: default;
 }
+
+@media screen and (max-width: 900px) {
+  .popup__save-button_disabled{
+    width: 100%;
+    height: 46px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+} 
