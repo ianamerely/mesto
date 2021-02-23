@@ -76,6 +76,15 @@ function handleLikeIcon(event){
 
 function openPopup(item){
   item.classList.toggle('popup_opened');
+  item.tabIndex = -1
+  const openedPopup = document.querySelector('.popup_opened')
+  openedPopup.addEventListener('click', closeViaOverlay);
+  document.addEventListener('keydown', closeViaEsc)
+}
+
+function closePopup(item){
+  item.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeViaEsc)
 }
 
 function openPopupTypePicture(item){
@@ -83,21 +92,6 @@ function openPopupTypePicture(item){
   popupPicture.src = item.link; 
   popupPicture.alt = item.name; 
   popupSubtitle.textContent = item.name;
-  closeViaOverlay();
-}
-
-formPlaceOpenButton.addEventListener('click', () => {
-  openPopup(popupTypePlace); 
-  placeNameInput.value = ""; 
-  placeLinkInput.value = "";
-  const popupTypePlaceSaveButton = popupTypePlace.querySelector('.popup__save-button')
-  popupTypePlaceSaveButton.classList.add('popup__save-button_disabled')
-  popupTypePlaceSaveButton.setAttribute('disabled', true);
-  closeViaOverlay();
-});  
-
-function closePopup(item){
-  item.classList.remove('popup_opened');
 }
 
 function handleProfileSubmit(evt){ 
@@ -116,35 +110,35 @@ function handlePlaceSubmit(evt){
   closePopup(popupTypePlace); 
 } 
 
+  const closeViaOverlay = (evt) => {
+      if (evt.target === evt.currentTarget) {
+        closePopup(evt.target)
+      };
+  }
+
+  const closeViaEsc = (evt) => {
+    if (evt.key === "Escape") {
+    const openedPopup = document.querySelector('.popup_opened')
+    closePopup(openedPopup)
+    };
+}
+
+ formPlaceOpenButton.addEventListener('click', () => {
+  openPopup(popupTypePlace); 
+  placeNameInput.value = ""; 
+  placeLinkInput.value = "";
+  const popupTypePlaceSaveButton = popupTypePlace.querySelector('.popup__save-button')
+  popupTypePlaceSaveButton.classList.add('popup__save-button_disabled')
+  popupTypePlaceSaveButton.setAttribute('disabled', true);
+});  
+
 formProfileOpenButton.addEventListener('click', () => {
   openPopup(popupTypeProfile);
   nameInput.value= profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
-  closeViaOverlay();
 })
 
-
-
-const closeViaOverlay = () => {
-  const popupList = Array.from(document.querySelectorAll('.popup'));
-  popupList.forEach (() => {
-  addEventListener ('click', (evt) => {
-      if (evt.target === evt.currentTarget) {
-        return;
-      }
-        closePopup(evt.target)
-      } 
-      );
-  });
-};
-
-  
-
-
-
-
 popupTypeProfileCloseButton.addEventListener('click', () => {closePopup(popupTypeProfile);});
-
 popupTypePlaceCloseButton.addEventListener('click', () => {closePopup(popupTypePlace);});
 
 popupTypePictureCloseButton.addEventListener('click', () => closePopup(popupTypePicture));
