@@ -75,15 +75,26 @@ function handleLikeIcon(event){
 } 
 
 function openPopup(item){
-  item.classList.toggle('popup_opened')
+  item.classList.toggle('popup_opened');
 }
 
 function openPopupTypePicture(item){
   openPopup(popupTypePicture);
   popupPicture.src = item.link; 
   popupPicture.alt = item.name; 
-  popupSubtitle.textContent = item.name 
+  popupSubtitle.textContent = item.name;
+  closeViaOverlay();
 }
+
+formPlaceOpenButton.addEventListener('click', () => {
+  openPopup(popupTypePlace); 
+  placeNameInput.value = ""; 
+  placeLinkInput.value = "";
+  const popupTypePlaceSaveButton = popupTypePlace.querySelector('.popup__save-button')
+  popupTypePlaceSaveButton.classList.add('popup__save-button_disabled')
+  popupTypePlaceSaveButton.setAttribute('disabled', true);
+  closeViaOverlay();
+});  
 
 function closePopup(item){
   item.classList.remove('popup_opened');
@@ -106,15 +117,36 @@ function handlePlaceSubmit(evt){
 } 
 
 formProfileOpenButton.addEventListener('click', () => {
-  openPopup(popupTypeProfile); nameInput.value= profileTitle.textContent;
+  openPopup(popupTypeProfile);
+  nameInput.value= profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
+  closeViaOverlay();
 })
-formPlaceOpenButton.addEventListener('click', () => {
-  openPopup(popupTypePlace); placeNameInput.value = ""; 
-  placeLinkInput.value = "";
-});  
-popupTypeProfileCloseButton.addEventListener('click', () => closePopup(popupTypeProfile));
-popupTypePlaceCloseButton.addEventListener('click', () => closePopup(popupTypePlace));
+
+
+
+const closeViaOverlay = () => {
+  const popupList = Array.from(document.querySelectorAll('.popup'));
+  popupList.forEach (() => {
+  addEventListener ('click', (evt) => {
+      if (evt.target === evt.currentTarget) {
+        return;
+      }
+        closePopup(evt.target)
+      } 
+      );
+  });
+};
+
+  
+
+
+
+
+popupTypeProfileCloseButton.addEventListener('click', () => {closePopup(popupTypeProfile);});
+
+popupTypePlaceCloseButton.addEventListener('click', () => {closePopup(popupTypePlace);});
+
 popupTypePictureCloseButton.addEventListener('click', () => closePopup(popupTypePicture));
 formProfile.addEventListener('submit', handleProfileSubmit); 
 formPlace.addEventListener('submit', handlePlaceSubmit); 
