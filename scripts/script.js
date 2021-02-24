@@ -18,6 +18,7 @@ const popupPicture = document.querySelector('.popup__picture');
 const popupSubtitle = document.querySelector('.popup__subtitle');
 const elementsContainer = document.querySelector('.elements');
 const templateElement = document.querySelector('.template');
+const popupTypePlaceSaveButton = popupTypePlace.querySelector('.popup__save-button') 
 const initialCards = [
   {
     name: 'Архыз',
@@ -76,16 +77,15 @@ function handleLikeIcon(event){
 
 function openPopup(item){
   item.classList.toggle('popup_opened');
-  item.tabIndex = -1
-  /* const openedPopup = document.querySelector('.popup_opened')
-  openedPopup.addEventListener('click', closeViaOverlay); */
+  item.tabIndex = -1;
   item.addEventListener('click', closeViaOverlay);
   document.addEventListener('keydown', closeViaEsc);
 }
 
 function closePopup(item){
   item.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeViaEsc)
+  item.removeEventListener('click', closeViaOverlay); 
+  document.removeEventListener('keydown', closeViaEsc);
 }
 
 function openPopupTypePicture(item){
@@ -128,8 +128,7 @@ function handlePlaceSubmit(evt){
   openPopup(popupTypePlace); 
   placeNameInput.value = ""; 
   placeLinkInput.value = "";
-  const popupTypePlaceSaveButton = popupTypePlace.querySelector('.popup__save-button')
-  popupTypePlaceSaveButton.classList.add('popup__save-button_disabled')
+  popupTypePlaceSaveButton.classList.add('popup__save-button_disabled');
   popupTypePlaceSaveButton.setAttribute('disabled', true);
 });  
 
