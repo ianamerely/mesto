@@ -140,7 +140,6 @@ formProfileOpenButton.addEventListener('click', () => {
 
 popupTypeProfileCloseButton.addEventListener('click', () => {closePopup(popupTypeProfile);});
 popupTypePlaceCloseButton.addEventListener('click', () => {closePopup(popupTypePlace);});
-
 popupTypePictureCloseButton.addEventListener('click', () => closePopup(popupTypePicture));
 formProfile.addEventListener('submit', handleProfileSubmit); 
 formPlace.addEventListener('submit', handlePlaceSubmit); 
