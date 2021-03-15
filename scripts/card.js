@@ -31,7 +31,7 @@ _handleLikeIcon(){
   this._element.querySelector('.element__heart-icon').addEventListener('click', ()=>{
   this._handleLikeIcon()}); 
   this._element.querySelector('.element__pic').addEventListener('click', ()=>{
-    this._openPopupTypePicture(this._cardName, this._cardLink)()})
+    this._openPopupTypePicture(this._cardName, this._cardLink)})
 } 
 
 generateCard() {

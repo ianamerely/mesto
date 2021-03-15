@@ -18,8 +18,8 @@ const popupPicture = document.querySelector('.popup__picture');
 const popupSubtitle = document.querySelector('.popup__subtitle');
 const elementsContainer = document.querySelector('.elements');
 const popupTypePlaceSaveButton = popupTypePlace.querySelector('.popup__save-button') 
-const elementDeliteButton = document.querySelector('.element__delite-button');  
-const elementLikeButton = document.querySelector('.element__heart-icon');  
+/* const elementDeliteButton = document.querySelector('.element__delite-button');  
+const elementLikeButton = document.querySelector('.element__heart-icon');   */
 const initialCards = [
   {
     name: 'Архыз',
@@ -47,7 +47,27 @@ const initialCards = [
   }
 ]; 
 
+const validationSettings = {
+  formSelector: '.popup__container',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_visible'
+}; 
+
+
 import Card from './card.js'
+import FormValidator from './formValidator.js'
+
+const popupTypeProfileFormValidator = new FormValidator(validationSettings, popupTypeProfile)
+const popupTypePlaceFormValidator = new FormValidator(validationSettings, popupTypePlace)
+
+popupTypeProfileFormValidator.enableValidation()
+
+popupTypePlaceFormValidator.enableValidation()
+
+
 
 
 const getItem = () => {
