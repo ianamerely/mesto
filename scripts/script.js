@@ -17,8 +17,9 @@ const placeLinkInput = popupTypePlace.querySelector('.popup__input_type_place-li
 const popupPicture = document.querySelector('.popup__picture');
 const popupSubtitle = document.querySelector('.popup__subtitle');
 const elementsContainer = document.querySelector('.elements');
-const templateElement = document.querySelector('.template');
 const popupTypePlaceSaveButton = popupTypePlace.querySelector('.popup__save-button') 
+const elementDeliteButton = document.querySelector('.element__delite-button');  
+const elementLikeButton = document.querySelector('.element__heart-icon');  
 const initialCards = [
   {
     name: 'Архыз',
@@ -46,34 +47,18 @@ const initialCards = [
   }
 ]; 
 
-function getItem(item){ 
-  const newItem = templateElement.content.cloneNode(true); 
-  const itemTitle = newItem.querySelector('.element__name'); 
-  const itemPicture = newItem.querySelector('.element__pic'); 
-  itemTitle.textContent = item.name; 
-  itemPicture.src = item.link; 
-  itemPicture.alt= item.name; 
-  const elementDeliteButton = newItem.querySelector('.element__delite-button'); 
-  elementDeliteButton.addEventListener('click', handleDeleteCard); 
-  const elementLikeButton = newItem.querySelector('.element__heart-icon'); 
-  elementLikeButton.addEventListener('click',  handleLikeIcon); 
-  itemPicture.addEventListener('click', () => openPopupTypePicture(item));
-  return newItem; 
-} 
+import Card from './card.js'
 
-function render() { 
-  const html = initialCards 
-  .map(getItem) 
-  elementsContainer.append(...html); 
-} 
 
-function handleDeleteCard(event){ 
-  event.target.closest('.element').remove(); 
-} 
+const getItem = () => {
+  initialCards.forEach((item) => {
+    const card = new Card (item, '.template', openPopupTypePicture)
+    const cardElement = card.generateCard();
+    elementsContainer.append(cardElement);
+  });
+};
 
-function handleLikeIcon(event){ 
-  event.target.classList.toggle('element__heart-icon_liked')
-} 
+
 
 function openPopup(item){
   item.classList.toggle('popup_opened');
@@ -88,11 +73,11 @@ function closePopup(item){
   document.removeEventListener('keydown', closeViaEsc);
 }
 
-function openPopupTypePicture(item){
+function openPopupTypePicture(name, link){
   openPopup(popupTypePicture);
-  popupPicture.src = item.link; 
-  popupPicture.alt = item.name; 
-  popupSubtitle.textContent = item.name;
+  popupPicture.src = link; 
+  popupPicture.alt = name; 
+  popupSubtitle.textContent = name;
 }
 
 function handleProfileSubmit(evt){ 
@@ -144,4 +129,4 @@ popupTypePictureCloseButton.addEventListener('click', () => closePopup(popupType
 formProfile.addEventListener('submit', handleProfileSubmit); 
 formPlace.addEventListener('submit', handlePlaceSubmit); 
 
-render()
+getItem()
