@@ -18,8 +18,8 @@ const popupPicture = document.querySelector('.popup__picture');
 const popupSubtitle = document.querySelector('.popup__subtitle');
 const elementsContainer = document.querySelector('.elements');
 const popupTypePlaceSaveButton = popupTypePlace.querySelector('.popup__save-button') 
-/* const elementDeliteButton = document.querySelector('.element__delite-button');  
-const elementLikeButton = document.querySelector('.element__heart-icon');   */
+
+/* const inputList = document.querySelectorAll('.popup__input'); */
 const initialCards = [
   {
     name: 'Архыз',
@@ -63,9 +63,9 @@ import FormValidator from './formValidator.js'
 const popupTypeProfileFormValidator = new FormValidator(validationSettings, popupTypeProfile)
 const popupTypePlaceFormValidator = new FormValidator(validationSettings, popupTypePlace)
 
-popupTypeProfileFormValidator.enableValidation()
-
+/* popupTypeProfileFormValidator.enableValidation()
 popupTypePlaceFormValidator.enableValidation()
+ */
 
 
 
@@ -85,6 +85,12 @@ function openPopup(item){
   item.tabIndex = -1;
   item.addEventListener('click', closeViaOverlay);
   document.addEventListener('keydown', closeViaEsc);
+ /*  popupTypeProfileFormValidator.enableValidation()
+  popupTypePlaceFormValidator.enableValidation()
+  popupTypeProfileFormValidator.resetErrors()
+  popupTypePlaceFormValidator.resetErrors() */
+/*   popupTypePlaceFormValidator.deleteInputFieldsErrors(inputList)
+  popupTypeProfileFormValidator.deleteInputFieldsErrors(inputList) */
 }
 
 function closePopup(item){
@@ -111,8 +117,9 @@ function handlePlaceSubmit(evt){
   evt.preventDefault(); 
   const placeTitle = placeNameInput.value; 
   const placeLink = placeLinkInput.value; 
-  const placeItem = getItem({name: placeTitle , link: placeLink}); 
-  elementsContainer.prepend(placeItem); 
+  const placeItem = new Card({name:placeTitle, link:placeLink}, '.template', openPopupTypePicture); 
+  const newItem = placeItem.generateCard()
+  elementsContainer.prepend(newItem); 
   closePopup(popupTypePlace); 
 } 
 
@@ -135,17 +142,20 @@ function handlePlaceSubmit(evt){
   placeLinkInput.value = "";
   popupTypePlaceSaveButton.classList.add('popup__save-button_disabled');
   popupTypePlaceSaveButton.setAttribute('disabled', true);
+  popupTypePlaceFormValidator.enableValidation()
 });  
 
 formProfileOpenButton.addEventListener('click', () => {
   openPopup(popupTypeProfile);
   nameInput.value= profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
+  popupTypeProfileFormValidator.enableValidation()
+
 })
 
-popupTypeProfileCloseButton.addEventListener('click', () => {closePopup(popupTypeProfile);});
-popupTypePlaceCloseButton.addEventListener('click', () => {closePopup(popupTypePlace);});
-popupTypePictureCloseButton.addEventListener('click', () => closePopup(popupTypePicture));
+popupTypeProfileCloseButton.addEventListener('click', () => {closePopup(popupTypeProfile)});
+popupTypePlaceCloseButton.addEventListener('click', () => {closePopup(popupTypePlace)})
+popupTypePictureCloseButton.addEventListener('click', () => {closePopup(popupTypePicture)});
 formProfile.addEventListener('submit', handleProfileSubmit); 
 formPlace.addEventListener('submit', handlePlaceSubmit); 
 
