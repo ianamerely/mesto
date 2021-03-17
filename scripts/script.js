@@ -136,12 +136,14 @@ function handlePlaceSubmit(evt){
   placeLinkInput.value = "";
   popupTypePlaceSaveButton.classList.add('popup__save-button_disabled');
   popupTypePlaceSaveButton.setAttribute('disabled', true);
+  popupTypePlaceFormValidator.resetValidation()
 });  
 
 formProfileOpenButton.addEventListener('click', () => {
   openPopup(popupTypeProfile);
   nameInput.value= profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
+  popupTypeProfileFormValidator.resetValidation()
 
 })
 
