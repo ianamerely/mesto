@@ -11,7 +11,6 @@ export default class FormValidator{
   }
 
 _showInputError(inputElement, errorMessage){
-  this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector))
   const errorElement = this._form.querySelector(`.${inputElement.id}-error`)
   errorElement.textContent = errorMessage;
   errorElement.classList.add(this._errorClass)
@@ -19,7 +18,6 @@ _showInputError(inputElement, errorMessage){
 }
 
 _hideInputError(inputElement){
-  this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector))
   const errorElement =  this._form.querySelector(`.${inputElement.id}-error`)
   errorElement.textContent = '';
   errorElement.classList.remove(this._errorClass)
