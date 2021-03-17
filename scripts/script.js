@@ -57,27 +57,28 @@ const validationSettings = {
 }; 
 
 
-import Card from './card.js'
-import FormValidator from './formValidator.js'
+import Card from './Card.js'
+import FormValidator from './FormValidator.js'
 
 const popupTypeProfileFormValidator = new FormValidator(validationSettings, popupTypeProfile)
+popupTypeProfileFormValidator.enableValidation()
 const popupTypePlaceFormValidator = new FormValidator(validationSettings, popupTypePlace)
-
-/* popupTypeProfileFormValidator.enableValidation()
 popupTypePlaceFormValidator.enableValidation()
- */
 
 
 
 
-const getItem = () => {
-  initialCards.forEach((item) => {
-    const card = new Card (item, '.template', openPopupTypePicture)
-    const cardElement = card.generateCard();
-    elementsContainer.append(cardElement);
+function renderCards(data){
+  data.forEach((dataElement) => {
+    const newcard = createCard(dataElement);
+    elementsContainer.append(newcard);
   });
 };
 
+function createCard(dataElement){
+  const card = new Card (dataElement, '.template', openPopupTypePicture);
+  return card.generateCard()
+} 
 
 
 function openPopup(item){
@@ -85,12 +86,6 @@ function openPopup(item){
   item.tabIndex = -1;
   item.addEventListener('click', closeViaOverlay);
   document.addEventListener('keydown', closeViaEsc);
- /*  popupTypeProfileFormValidator.enableValidation()
-  popupTypePlaceFormValidator.enableValidation()
-  popupTypeProfileFormValidator.resetErrors()
-  popupTypePlaceFormValidator.resetErrors() */
-/*   popupTypePlaceFormValidator.deleteInputFieldsErrors(inputList)
-  popupTypeProfileFormValidator.deleteInputFieldsErrors(inputList) */
 }
 
 function closePopup(item){
@@ -117,9 +112,8 @@ function handlePlaceSubmit(evt){
   evt.preventDefault(); 
   const placeTitle = placeNameInput.value; 
   const placeLink = placeLinkInput.value; 
-  const placeItem = new Card({name:placeTitle, link:placeLink}, '.template', openPopupTypePicture); 
-  const newItem = placeItem.generateCard()
-  elementsContainer.prepend(newItem); 
+  const placeItem = createCard({name:placeTitle, link:placeLink}); 
+  elementsContainer.prepend(placeItem); 
   closePopup(popupTypePlace); 
 } 
 
@@ -142,14 +136,12 @@ function handlePlaceSubmit(evt){
   placeLinkInput.value = "";
   popupTypePlaceSaveButton.classList.add('popup__save-button_disabled');
   popupTypePlaceSaveButton.setAttribute('disabled', true);
-  popupTypePlaceFormValidator.enableValidation()
 });  
 
 formProfileOpenButton.addEventListener('click', () => {
   openPopup(popupTypeProfile);
   nameInput.value= profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
-  popupTypeProfileFormValidator.enableValidation()
 
 })
 
@@ -159,4 +151,4 @@ popupTypePictureCloseButton.addEventListener('click', () => {closePopup(popupTyp
 formProfile.addEventListener('submit', handleProfileSubmit); 
 formPlace.addEventListener('submit', handlePlaceSubmit); 
 
-getItem()
+renderCards(initialCards)

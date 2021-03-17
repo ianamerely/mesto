@@ -24,6 +24,7 @@ _hideInputError(inputElement){
   inputElement.classList.remove(this._inputErrorClass);
 }
 
+
 _setEventListeners() {
   this._form.addEventListener('submit', (event) => {
     event.preventDefault()
@@ -66,13 +67,7 @@ _checkInputValidity(inputElement){
 
 
 enableValidation (){
-  const formList = Array.from(document.querySelectorAll(this._formSelector));
-  formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
  this._setEventListeners()
-  });
 }
 
 }
